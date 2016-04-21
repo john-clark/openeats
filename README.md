@@ -1,8 +1,13 @@
-OpenEats Web app
+OpenEats Symphony Web Application
 ===================
 
+Original Author is [qgriffith](https://github.com/qgriffith)
 
 This project moves the discarded [OpenEats project on SourceForge](https://sourceforge.net/projects/openeats/) to [Github](https://github.com/john-clark/openeats).
+
+I am not attempting to add any functionality or fix any bugs or security issues.
+
+[Orginal info](https://openeats.wordpress.com/install/) may be of some help, but is from 2008/09.
 
 ----------
 
@@ -11,10 +16,7 @@ Info
 
 Based off a base debian 8.4 install with only the webserver task.
 
-**NOTE:** This is testing. I am wiping the VM and now trying these instructions.
-
-
-**Pre-Reqs:**
+###Pre-Reqs:
 
 > **MYSQL**
 > - `apt-get install mysql-server mysql-client`
@@ -27,23 +29,33 @@ Based off a base debian 8.4 install with only the webserver task.
 > - `vi /etc/php5/apache2/php.ini`
 > *change output_buffering = 4096 to on*
 
+> **GIT**
+> - `apt-get install git-core`
 
-**Install:**
+###Install:
 
 > **WebApp**
+> - `cd /var/www`
 > - `git clone http://github.com/john-clark/openeats`
-> - `chgrp -R www-data openeats`
+> - `cd openeats`
+> - `mkdir log cache`
 > - `chmod g+w log cache`
+> - `chgrp -R www-data .`
 
 > **Website**
 > - `rm /etc/apache2/sites-enabled/00-default.conf`
 > - `ln -s /var/www/openeats/conf/apache.conf /etc/apache2/sites-enabled/openeats.conf`
 > - `service apache2 restart`
 
-**Configure**
+###Import Database: 
+Might change this to importing `/data/sql/oe_schema.sql`
 
 > - *open browser to `http://tempserver/setup/install.php`*
 > - *Fill out form*
+
+## Notes:
+
+----
 
 **To debug errors `mv /var/www/openeats/debug.php /var/www/openeats/web/` 
 and browse to `http://tempserver/debug.php`**
