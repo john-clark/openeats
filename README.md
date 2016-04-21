@@ -13,11 +13,11 @@ Based off a base debian 8.4 install with only the webserver task.
 
 > **Pre-Git:**
 
-> `apt-get install lynx git`
-> `cd /var/www`
-> `use lynx to browse to the sourceforge page and download oe_1.2.tgz`
-> `tar xzvf oe_1.2.tgz`
-> `mv oe_1.2 openeats`
+> - `apt-get install lynx git`
+> - `cd /var/www`
+> - `use lynx to browse to the sourceforge page and download oe_1.2.tgz`
+> - `tar xzvf oe_1.2.tgz`
+> - `mv oe_1.2 openeats`
 
 > **Post-Git:**
 
@@ -30,7 +30,7 @@ Based off a base debian 8.4 install with only the webserver task.
 > - `apt-get install php5 php5-mysql php5-gd php-pear libpcre3 imagemagick`
 > - `vi /etc/php5/apache2/php.ini`
 > *change output_buffering = 4096 to on*
-> - `rm /etc/apache2/sites-enabled/00-default.conf
+> - `rm /etc/apache2/sites-enabled/00-default.conf`
 > - `ln -s /var/www/openeats/conf/apache.conf /etc/apache2/sites-enabled/openeats.conf`
 > *fix/remove the sitename*, 
 > *fix log lines*
