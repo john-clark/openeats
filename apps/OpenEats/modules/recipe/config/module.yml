@@ -1,0 +1,7 @@
+all:
+  .settings:
+    msrmt:
+    arraymsrmt:{teaspoon(s): teaspoon(s), tablespoon(s): tablespoon(s), cup(s): cup(s), ounce(s): ounce(s), pint(s): pint(s), quart(s): quart(s), gallon(s): gallon(s), clove(s): clove(s), pound(s): pound(s), pinch: pinch, dash: dash, can(s): can(s), package(s): package(s), whole: whole, bunch: bunch, jar: jar, stalk: stalk, large: large, medium: medium, small: small }
+    arraybase:{ Beef: Beef, Pork: Pork, Poultry: Poultry, Seafood: Seafood, Vegetable: Vegetable, Bread: Bread, Dairy: Dairy, Alcohol: Alcohol, Other: Other}
+    arraymin:{ 00: 00, 05: 05, 10: 10, 15: 15, 20: 20, 25: 25, 30: 30, 35: 35, 40: 40, 45: 45, 50: 50, 55: 55 }
+    arrayhr:{ 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12 }

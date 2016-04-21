@@ -1,0 +1,7 @@
+#If you install OpenEats into a directory under your Document Root and are unable to access your httpd.conf file change /oe/ to the 
+#directory you installed OpenEats in, and you will be able to access OpenEats by going to http://yourhost/oedirectory
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(.*)$ /%s/web/index.php/$1
+</IfModule>

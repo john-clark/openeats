@@ -1,0 +1,153 @@
+++++Modules++++
+
+Legend:
+
+module/
+  action1
+  action2
+  action3
+
+
+feed/
+  Headline
+
+ frontpage/
+ 
+ headline/
+   List
+   Show
+   Create
+   Edit
+   Update
+   Delete
+
+ingredient/
+  Add
+  Update
+
+keyword/
+  Add
+  Autocomplete
+  Remove
+  Show
+
+mail/
+  SendPassword
+
+recipe/
+ _retrivePost
+ AddIng
+ Edit
+ Index
+ ingrd_autocomplete (not in use)
+ IngRemove
+ List
+ Print
+ RateForRecipe
+ Show
+ Update
+ getCredential
+ getRecipeOrCreate
+
+sidebar/
+  Recipe (component)
+
+user/
+  Add
+  Login
+  Logout
+  PasswordReset
+  Registration
+  Show
+  Stored
+  Unstore
+  Update
+  setShowVars
+ 
+
++++Methods+++
+
+Legend
+
+Model->
+  custommethod1
+  custommethod2
+  custommethod3
+
+Headline->
+  setHeadlineTitle($v)
+
+HeadlinePeer::
+  getHeadlineFromStripTitle($title)
+
+Ingredient->
+  getInglist()
+  addIngredientFor($n_newIng, $userId)
+
+Rate->
+  save($con=null)
+
+Recipe->
+  getCourse_ID($c=null)
+  getCourse_NM($c=null)
+  getEthn_ID($c=null)
+  getEthn_NM($c=null)
+  getCourselist()
+  getEthnlist()
+  getIngrds()
+  getQty($ing_id, $rec_id)
+  getMsrmt($ing_id, $rec_id)
+  getPrep($ing_id, $rec_id)
+  setCourse($course_id, $recipe_id)
+  setEthn($ethn_id, $recipe_id)
+  setIngr($ingr, $recipe_id, $quantity, $msrmt, $prep)
+  setRecipeNm($v)
+  getKeywords()
+  addKeywordsForUser
+  getRecipeCookTime()
+
+RecipePeer::
+  getRecipeFromStripTitle($title)
+  getRecipesByKeyword($keyword)
+
+RecipeKeyword->
+  setKeyword($v)
+
+StoredRecipe->
+ getStoredRecipe($id)
+
+User->
+  setPassword($password)
+  getKeywordsFor($recipe, $max = 10)
+  removeKeyword($recipe, $keyword)
+  getIsAdministrator($authlvl)
+
+UserPeer::
+  getUserFromLogin($login)
+  getKeywordsForUser($user_id)
+
+++++Custom Validators+++
+
+user/
+  myEmailRegistrationValidator.class.php
+  myLoginRegistrationValidator.class.php
+  myLoginValidator.class.php
+
+ingredient/
+ myIngValidator.class.php
+
+recipe/
+  myRecipeValidator.class.php
+
+++++Custom Classes Methods++++
+
+myUser->
+  signIn($user, $remember = false)
+  signOut()
+  getSubscriberId()
+  getSubscriber()
+  getLogin()
+  canRateFor($recipe)
+  isOwnerof($recipe)
+
+

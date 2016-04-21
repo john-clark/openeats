@@ -1,0 +1,239 @@
+#recipe
+
+add_ing:
+  url: /recipe/add_ing_ajax
+  param: { module: recipe, action: Add_Ing_Ajax }
+
+add_item:
+  url: /menu/add_item_ajax
+  param: { module: menu, action: Add_Item_Ajax }  
+
+top_recipes:
+  url: /recipe/TopRecipe
+  param: { module: recipe, action: TopRecipe }
+
+list_recipe:
+  url: /recipe/list
+  param: { module: recipe, action: list }
+
+check_recipe_nm:
+  url: /recipe/checknm
+  param: { module: recipe, action: CheckRecipeNm }
+
+create_recipe:
+  url: /recipe/edit
+  param: { module: recipe, action: edit }
+
+update_recipe:
+  url: /recipe/udpate
+  param: { module: recipe, action: update }
+
+search_recipe:
+  url: /recipe/search
+  param: { module: recipe, action: Search }
+
+advance_search_recipe:
+  url: /recipe/advance/search
+  param: { module: recipe, action: AdvanceSearch }    
+
+get_recipe:
+  url: /recipe/:recipestripnm
+  param: { module: recipe, action: show }
+    
+recipe_edit:
+  url: /recipe/edit/:recipe_strip_nm
+  param: { module: recipe, action: edit }
+
+recipe_print:
+  url: /recipe/print/:recipestripnm
+  param: {module: recipe, action: print }
+
+browse_base:
+  url: /recipe/base/:base
+  param: { module: recipe, action: BrowseBase }
+
+browse_course:
+  url: /recipe/course/:course
+  param: { module: recipe, action: BrowseCourse }
+
+browse_ethnicity:
+  url: /recipe/ethnicity/:ethnicity
+  param: { module: recipe, action: BrowseEthnicity }
+  
+browse_rate:
+  url: /recipe/browse/rate
+  param: { module: recipe, action: BrowseRate }
+
+browse_name:
+  url: /recipe/browse/name
+  param: { module: recipe, action: BrowseName }          
+
+#headline
+
+list_headline:
+  url: /headline/list
+  param: { module: headline, action: list}
+
+create_headline:
+  url: /headline/create
+  param: { module: headline, action: create }
+
+update_headline:
+  url: /headline/update
+  param: {module: headline, action: update }
+
+get_headline:
+  url: /headline/:headlinestriptitle
+  param: { module: headline, action: show }
+
+edit_headline:
+  url: /headline/edit/:headlinestriptitle
+  param: { module: headline, action: edit }
+
+#ingredient
+
+add_ingrd:
+  url:   /add_ingrd
+  param: { module: recipe, action: add_ingrd }
+
+ing_remove:
+  url: /ing_remove
+  param: { module: recipe, action: ing_remove }
+
+ingrd_autocomplete:
+  url:   /ingrdautocomplete
+  param: { module: recipe, action: ingrd_autocomplete }
+
+ing_add:
+  url: /Adding
+  param: { module: recipe, action: AddIng }
+
+#user
+
+user_reset_password:
+  url: /password_reset
+  param: { module: user, action: passwordReset }
+
+registration:
+  url: /user/registration
+  param: { module: user, action: registration }
+
+user_profile:
+  url: /profile/:login
+  param: { module: user, action: show }
+ 
+report_recipe:
+  url: /report/recipe/:recipestripnm
+  param: { module: user, action: ReportRecipe }
+
+user_recipes:
+  url: /:user/recipes
+  param: { module: user, action: UserRecipes }
+ 
+user_stored:
+  url: /:login/stored
+  param: { module: user, action: StoredRecipe }    
+
+#keyword
+
+keyword:
+  url:   /keyword/:keyword
+  param: { module: keyword, action: show }
+
+keyword_autocomplete:
+  url: /keyword_autocomplete
+  param: { module: keyword, action: autocomplete }
+
+keyword_add:
+  url: /keyword_add
+  param: { module: keyword, action: add }
+
+keyword_remove:
+  url:   /recipe/:recipestripnm/keyword/remove/:keyword
+  param: { module: keyword, action: remove }
+
+#planner
+
+mark_private:
+  url: /planner/markPrivate
+  param: { module: planner, action: MarkPrivate }
+
+planner_update:
+  url: /planner/update
+  param: { module: planner, action: Update }
+
+planner:
+  url: /planner/:login
+  param: { module: planner, action: index }
+
+#menus
+
+menu_mark_private:
+  url: /menu/markPrivate/:menu_id
+  param: { module: menu, action: MarkPrivate }
+
+list_menu:
+  url: /menu/show/:user
+  param: { module: menu, action: list }
+
+edit_menu:
+  url: /menu/edit/:menu_strip_nm
+  param: { module: menu, action: edit }
+  
+add_menu:
+  url:  /menu/recipe/:recipestripnm
+  param: { module: menu, action: AddtoMenu}  
+
+get_menu:
+  url:   /menu/:user/:menu_strip_nm
+  param: { module: menu, action: show }
+
+
+  
+#grocery list
+
+add_list:
+  url: /grocery/recipe/:recipestripnm
+  param: { module: grocery, action: AddtoList }
+
+edit_list:
+  url: /list/edit/:grocery_strip_nm
+  param: { module: grocery, action: edit }
+
+get_list:
+  url: /list/:user/:grocery_strip_nm
+  param: { module: grocery, action: show }
+
+add_grocery_item:
+    url: /grocery/add_item_ajax
+    param: { module: grocery, action: Add_Item_Ajax }
+
+add_pantry_item:
+  url: /grocery/list/pantry_ajax
+  param: { module: grocery, action: Add_Pantry_Ajax }    
+
+print_list:
+  url: /grocery/print/:grocery_strip_nm
+  param: { module: grocery, action: print }    
+          
+#feeds
+
+feed_headlines:
+  url:  /feed/headline
+  param: { module: feed, action: headline }
+
+# default rules
+homepage:
+  url:   /
+  param: { module: frontpage, action: index }
+
+default_symfony:
+  url:   /symfony/:action/*
+  param: { module: default }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:  /:module/:action/*

@@ -1,0 +1,7 @@
+# default values
+all:
+  version: 1.2
+  admin_email: user@localhost.com
+  .settings:
+      msrmt:
+      arraybase:{ Beef: Beef, Pork: Pork, Poultry: Poultry, Seafood: Seafood, Vegetable: Vegetable, Bread: Bread, Dairy: Dairy, Alcohol: Alcohol, Other: Other}

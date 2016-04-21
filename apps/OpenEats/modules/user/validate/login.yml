@@ -1,0 +1,19 @@
+fields:
+  login:
+    required:      Yes
+      msg:  Your login name is requried
+    sfStringValidator:
+      min: 3
+      min_error: Login name must be 3 or more characters
+    userValidator:  
+
+  password:
+    required:      Yes
+      msg:  Your password is required
+
+validators:
+  userValidator:
+    class:  myLoginValidator
+    param:
+      password:   password
+      login_error: This account does not exist or you entered a wrong password 

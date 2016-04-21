@@ -1,0 +1,12 @@
+indexSuccess:
+  components:
+    sidebar: [sidebar, frontpage]
+
+aboutSuccess:
+  metas:
+    title: OpenEats Recipes::About
+
+FaqSuccess:
+  metas:
+    title: OpenEats Recipes::FAQ
+                           

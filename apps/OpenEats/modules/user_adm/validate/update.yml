@@ -1,0 +1,33 @@
+fields:
+  user_login:
+    required:     Yes
+      msg: Please enter a login name
+    sfStringValidator:
+      min: 3
+      min_error: User Login must contian 3 characters
+      max: 20
+      max_error: User login must not be more then 20 characters    
+             
+  user_fn:
+    required:     Yes
+      msg: Please enter a first name
+
+  userln:
+    required:     Yes
+       msg: Please enter a last name
+
+  pass:
+    sfStringValidator:
+      min: 6
+      min_error: Password must contain at least 6 characters        
+
+  user_email:
+    required:     Yes
+      msg: Please enter an email address
+    sfEmailValidator:
+      email_error:  You didn't enter a valid email address for example name@domain.com Please try again.   
+
+fillin:
+  enabled:  on
+    param:
+      name:  update

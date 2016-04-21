@@ -1,0 +1,4 @@
+fields:
+    date:
+        required:
+            msg: Please Enter a date to schedule your recipe

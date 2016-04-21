@@ -1,0 +1,8 @@
+UserRecipesSuccess:
+  javascripts: [/js/boxover.js]
+  
+StoredRecipeSuccess:
+  javascripts: [/js/boxover.js]
+
+showSuccess:
+  javascripts: [/js/boxover.js]          

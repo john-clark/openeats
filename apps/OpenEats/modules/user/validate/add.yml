@@ -1,0 +1,51 @@
+fields:
+  login:
+    required:     Yes
+      msg: Please enter a login name
+    sfStringValidator:
+      min: 3
+      min_error: Login name must be 3 or more characters
+      max: 20
+      max_error: Login name can not be more then 20 characters
+    sfPropelUniqueValidator:
+      class:        User
+      column:       USER_LOGIN
+      unique_error: Login name is already in use, please try another
+            
+
+  fname:
+    required:     Yes
+      msg: Please enter a first name
+    
+  lname:
+    required:     Yes
+      msg: Please enter a last name
+  
+  password:
+    required:      Yes
+      msg:  Please enter a password
+    sfStringValidator:
+      min: 6
+      min_error: Password must contain at least 6 characters        
+
+  pass2:
+    required:      Yes
+      msg:  Please re-type your password
+    sfCompareValidator:
+      check: password
+      compare_error: The passwords you entered do not match. Please try again.    
+
+  email:
+    required:      Yes
+      msg:  Please enter a valid email address
+    sfPropelUniqueValidator:
+      class:        User
+      column:       USER_EMAIL
+      unique_error: Email address is already in use, please try another        
+    sfEmailValidator:
+      email_error: You didn't enter a valid email address for example name@domain.com please try again.    
+
+fillin:
+  enabled:  on
+  param:
+    name:  registration

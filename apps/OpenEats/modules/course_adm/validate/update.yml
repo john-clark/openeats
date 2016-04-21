@@ -1,0 +1,14 @@
+fields:
+  course:
+    required: yes
+      msg: Please enter a course name
+    sfStringValidator:
+      min: 3
+      min_error: Course must contian 3 characters
+      max: 20
+      max_error: Course must have less then 20 characters   
+
+fillin:
+  enabled:  on
+  param:
+  name: update      

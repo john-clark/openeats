@@ -1,0 +1,59 @@
+showSuccess:
+  components:
+    sidebar: [sidebar, recipe]
+  javascripts: [/js/vote.js, /js/boxover.js]
+
+ShowCommentSuccess:
+  template: show
+  components:
+    sidebar: [sidebar, recipe]
+  javascripts: [/js/vote.js]     
+
+ShowSuggestionSuccess:
+  template: show                      
+  components:
+    sidebar: [sidebar, recipe]
+  javascripts: [/js/vote.js]    
+    
+indexSuccess:
+  components:
+    sidebar: [sidebar, browse]
+  javascripts: [/js/boxover.js]           
+   
+BrowseBaseSuccess:
+  components:
+    sidebar: [sidebar, browse]
+  javascripts: [/js/boxover.js]
+    
+BrowseCourseSuccess:
+  components:
+    sidebar: [sidebar, browse]
+  javascripts: [/js/boxover.js]
+    
+BrowseEthnicitySuccess:
+  components:
+    sidebar: [sidebar, browse] 
+  javascripts: [/js/boxover.js]
+  
+TopRecipeSuccess:
+  components:
+    sidebar: [sidebar, browse]
+  metas:
+    title: OpenEats Top Recipes          
+  javascripts: [/js/boxover.js]    
+    
+listSuccess:
+  components:
+    sidebar: [sidebar, browse]
+  javascripts: [/js/boxover.js]    
+
+editSuccess:
+    javascripts: [/js/wforms_core.js, /js/wforms_hint.js, /js/boxover.js]
+
+AdvanceSearchSuccess:
+  metas:
+    title: OpenEats Recipe::Advance Search          
+  javascripts: [/js/boxover.js] 
+ 
+SearchSuccess:
+    javascripts: [/js/boxover.js]   

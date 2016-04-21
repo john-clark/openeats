@@ -1,0 +1,13 @@
+fields:
+  add_ing:
+    required:      Yes
+      msg:  Please enter a name of an ingredient you would like to add
+    sfStringValidator:
+      min:       3
+      min_error: Please enter an ingredient with at least 3 letters
+      max:       50
+      max_error: Please enter an ingredient with less then 15 letters
+    sfPropelUniqueValidator:
+      class: Ingredient
+      column: INGRD_NM
+      unique_error:  This ingredient name is already in use please pick another one

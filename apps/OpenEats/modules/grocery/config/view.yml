@@ -1,0 +1,4 @@
+printSuccess:
+ has_layout:    off
+ stylesheets:    [recipe_print: { media: print }, -layout, main ]
+ componenets:   []

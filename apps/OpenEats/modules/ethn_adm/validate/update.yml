@@ -1,0 +1,14 @@
+fields:
+  ethn:
+    required: yes
+      msg: Please enter an ethnicity name
+    sfStringValidator:
+      min: 3
+      min_error: Ethnicity must contian 3 characters
+      max: 20
+      max_error: Ethnicity must have less then 20 characters   
+
+fillin:
+  enabled:  on
+  param:
+  name: update

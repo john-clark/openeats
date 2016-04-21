@@ -1,0 +1,61 @@
+default:
+  http_metas:
+    content-type: text/html; charset=utf-8
+  components:
+    components:
+    sidebar:  [sidebar, default]
+
+  metas:
+    title:        OpenEats Recipe Management Site
+    robots:       index, follow
+    description:  OpenEats Opensource Recipe Management Site
+    keywords:     symfony, Recipes, OpenEats, OpenSource, Grocery list, food, ingredients, schedule
+    language:     en
+
+  stylesheets:    [main, layout]
+
+  javascripts:    [%SF_PROTOTYPE_WEB_DIR%/js/prototype.js]
+
+  has_layout:     on
+  layout:         layout
+
+  slots:          {}
+ingrd_autocompleteSuccess:
+  has_layout:   off
+  components:   []
+  use_default_slots: on
+
+IngRemoveSuccess:
+  has_layout:  off
+  componets:   []
+
+storedSuccess:
+  has_layout:  off
+
+unstoreSuccess:
+  has_layout:  off
+
+autocompleteSuccess:
+  has_layout:   off
+  components:   []
+
+addSuccess:
+  has_layout:    off
+  components:    []
+
+removeSuccess:
+  has_layout:    off
+  components:    []
+
+rateForRecipeSuccess:
+  has_layout:    off
+  components:    []
+
+AddIngSuccess:
+  has_layout:    off
+  components:    []
+
+printSuccess:
+ has_layout:    off
+ stylesheets:    [recipe_print: { media: print }, -layout, main ]
+ componenets:   []

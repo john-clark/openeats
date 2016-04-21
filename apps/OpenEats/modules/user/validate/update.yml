@@ -1,0 +1,15 @@
+fields:
+  pass1:
+    sfStringValidator:
+      min:       6
+      min_error: Password must contain at least 6 characters
+    sfCompareValidator:
+      check:         pass2
+      compare_error: The passwords you entered do not match. Please try again. 
+  
+  user_email:
+    required:     Yes
+      msg: Please enter an email address
+    sfEmailValidator:
+      email_error:  You didn't enter a valid email address for example name@domain.com Please try again.    
+ 

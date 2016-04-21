@@ -1,0 +1,1 @@
+<?php include_partial('rated', array('id' => $id, 'rate' => $rate)) ?>

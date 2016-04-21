@@ -1,0 +1,5 @@
+all:
+  propel:
+    class:          sfPropelDatabase
+    param:
+      dsn:          mysql://user:password@locahost/databse

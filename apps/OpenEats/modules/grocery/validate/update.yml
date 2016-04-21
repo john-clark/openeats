@@ -1,0 +1,14 @@
+fields:
+    grocery_nm:
+        required:
+          msg: Please Enter a name for your grocery list
+ 
+     count:
+      sfNumberValidator:
+        max: 9
+        max_error: Your are only allowed 10 grocery list please delete any unused ones        
+    
+fillin:
+  enabled:  on
+  param:
+    name: update

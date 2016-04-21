@@ -1,0 +1,1 @@
+<?php include_partial('keyword/recipe_keywords', array('recipe' => $recipe, 'keywords' => $keywords)) ?>

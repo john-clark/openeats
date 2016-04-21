@@ -1,0 +1,76 @@
+<head>
+<style type="text/css">
+<!--
+h1, h2, h3, h4, h5, h6 {
+color:#9BBB38;
+font-family:"Lucida Grande",Tahoma,Arial,sans-serif;
+margin:1.2em 0;
+}
+body {
+background:	#E8E8CE; 
+}
+div {
+  background: #F9F993;
+  width: 400px;
+  padding: 5px;
+  border: 1px solid #7A7A7A;
+}
+!-->
+</style>
+<title>OpenEats Installation Documentation</title>
+</head>
+<div class='note'><h3>Notice!</h3>To see the most up to date installation document please go to <a href="http://openeats.wordpress.com/install">http://openeats.wordpress.com/install</a></div>
+<h2><em></em><em>Requirements:</em></h2>
+OpenEats has the following requirements in order to run properly.  Please make sure you meet them prior to the install.
+<ul>
+	<li>PHP Version 5.0 or greater</li>
+	<li>MySQL version 5.0 or greater</li>
+	<li>A web server</li>
+	<li>PHP compiled with the PCRE extentions</li>
+	<li>The 'Imagemagick' package installed or the GD extension compiled in PHP</li>
+</ul>
+To check your PHP version and to see if you have the proper extensions compiled in, create a file called info.php and type
+
+<code>"&lt;?php phpinfo()?&gt;" </code>minus the quotes.  Then save this file on your web server and point your browser to it.  The installer on OpenEats will also check these items to see if your server is compatible with OpenEats.
+<h2><em>Installation Types</em>:</h2>
+OpenEats can be installed a few different ways its up to you wish one you choice.  Option one or two are the recommended install methods.
+<ol>
+	<li>As a <a title="Virtualhost" href="http://httpd.apache.org/docs/1.3/vhosts/" target="_blank">Virtual Host</a> with a second level <a href="http://www.answers.com/topic/subdomain" target="_blank">subdomain</a> or its own domain.  See your web servers documentation on how to do this.</li>
+	<li>Under your document root.  Usually this is your htdocs directory.  Do run OpenEats in this fashion you will want to change the configuration of your web sever to use the /web directory of OpenEats as the document root directory, then restart your web server.</li>
+	<li>Under a subdirectory under your document root directory.   This may be the most common install method because it is best suited for new comers that do not have a lot of experience with setting up the first two methods.  This would be as simple as unzipping OpenEats under the web servers root directory and pointing your browser to http://yourhost/openeats.  This method may have small quirks depending on how your web server is set-up for OpenEats was orginally designed to run as the first two options, and had to be modfied to run as this option.  Most of the testing of OpenEats is done as the first two options.</li>
+</ol>
+<h2><em>Installation Methods:</em></h2>
+OpenEats ships with two installtion methods, a manual install and a semi-automated web based install.  For both methods you need to follow the initial steps below first.
+<ul>
+	<li>Download the latest copy of OpenEats  from <a title="Download" href="https://sourceforge.net/project/platformdownload.php?group_id=157564" target="_blank">SourceForge</a></li>
+	<li>FTP the downloaded file on to your web server</li>
+	<li>Uncompress the downloaded file</li>
+	<li>Move the directory that was uncompressed to your web server directory structure</li>
+	<li>Create a database for OpenEats using what ever method your hosting provider has giving you to creating Databases.  In the future I can put the different methods of creating the database if you, the users can send me how you created them with your hosting provider.</li>
+	<li>Create a database user and password and grant that user full rights to the newly created database</li>
+	<li>Chose one of the methods below to continue the installation</li>
+</ul>
+<h3>Web Based Installer:</h3>
+The web based installer is in alpha-version and has only been tested on Mac OS X and Linux. It should however work on Windows.
+<ol>
+	<li>Accessing the Web-based installer will depend on which method you used to install OpenEats.  If you picked one of the first two methods (sub domain, virtual host) point your browser to http://yourhost/setup/install.php  If you chose to run it out of a sub-directory point your browser to http://yourhost/yoursubdir/web/setup/install.php</li>
+	<li>OpenEats installer will then run through a compatibility check to see if your web server is ready to run the software</li>
+	<li>The next page will have you type in the database information you created</li>
+	<li>If all goes well the final page should give you a link to your site and you are ready to go</li>
+</ol>
+<h3>Manual Installer:</h3>
+<ol>
+	<li>Under the main OpenEats directory.  Edit the config/databases.sample.yml file and  type in your database server information in the provided stanzas in this file and save this file as databases.yml (remove the sample)</li>
+	<li>Under the main OpenEats directory.  Rename the file apps/OpenEats/config/app.sample.yml to app.yml</li>
+	<li>Load the oe_schema.sql sql file into your newly created database. This file is located under the OpenEats Directory /data/sql/oe_schema.sql . You are now complete if you chose one of the first two install methods above.  If you chose the third, to install under a subdirectory please contiune on.</li>
+	<li>Edit the .htaccess.sample file found under the OpenEats Directory. Change this line "RewriteRule ^(.*)$ /oe/web/index.php/$1" to
+RewriteRule ^(.*)$ /oedirectory/web/index.php/$1  with oedirectory being the directory you installed OpenEants under. Save this file as .htaccess</li>
+	<li>Edit the config.sample.php file found under the OpenEats Direcotory /apps/OpenEats/config Change this line 'sf_base_url_dir' =&gt; "", to 'sf_base_url_dir' =&gt; "/oedirectory/web",  Save this as config.php</li>
+	<li>You should now be able to point to your newly installed OpenEats.</li>
+</ol>
+<h2><em>Troubleshooting:</em></h2>
+The following should help with most issues you face when installing OpenEat.  The first thing you should do if you have a issue is place OpenEats in "debug" mode.  To do this copy the debug.php file found under where you installed OpenEats, to the web/ directory found under where you installed OpenEats.  Then point your browser to this file http://localhost/openeats/web/debug.php or http://localhost/debug.php. This will give a more verbose ouput when issues occur
+
+If a issue has been resloved you will need to delete the cahce directory found under where you installed OpenEats. The cache is used to speed up pages, however after if you fix a error you don't want the 'cached' version of the error so removing this directory will force the cache to be re-created.
+
+Feel free to post in the <a title="forums" href="https://sourceforge.net/forum/forum.php?forum_id=530260" target="_self">OpenEats forums </a>and I will help you out with any issues.

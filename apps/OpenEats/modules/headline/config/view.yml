@@ -1,0 +1,7 @@
+showSuccess:
+  components:
+    sidebar: [sidebar, frontpage]
+
+listSuccess:
+  components:
+    sidebar: [sidebar, frontpage]    

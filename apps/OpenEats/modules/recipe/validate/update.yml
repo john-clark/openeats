@@ -1,0 +1,54 @@
+fields:
+  recipe_nm:
+    required:     Yes
+      msg: The Recipe Name field cannot be left blank
+    sfStringValidator:
+      min: 3
+      min_error: Recipe name must be at least 3 characters
+      max: 50
+      max_error: Recipe name must be less then 50 characters
+     
+  
+  recipe_desc:
+    required:      Yes
+      msg:  The description field cannot be left blank
+  
+  recipe_directions:
+    required:     Yes
+      msg: Please explain how to cook this
+    sfStringValidator:
+      min: 10
+      min_error: Directions must contian at least 10 characters
+       
+  
+  pic:
+    myFileValidator:
+    file:        true
+    
+  course_id:
+    required:    Yes
+      msg: The course can not be left blank please select one
+  
+  ethnicity_id:
+    required:    Yes
+      msg: The ethnicity can not be left blank please select one         
+ 
+
+validators:
+  myFileValidator:
+    class:        sfFileValidator
+    param:
+      mime_types:
+        - 'image/jpeg'
+        - 'image/png'
+        - 'image/x-png'
+        - 'image/pjpeg'
+        - 'image/gif'
+      mime_types_error: Only PNG JPEG and GIF images allowed   
+      max_size:           512000
+      max_size_error:     Max size is 512kb
+ 
+fillin:
+  enabled:  on
+  param:
+    name: update

@@ -1,0 +1,1457 @@
+
+Open Eats Change Log
+=================================================
+
+Version 0.0.1 02/21/06
+
+Initial release of Open Eats.  The frame work has been started, a rough design for the database
+has been loaded.  As of right now you can add recipes to the database and list the recipes.
+Still lacking the ability to add ingredients, select categories, and add directions for a recipe.
+
+Version 0.0.2 02/25/06
+
+===Database Changes===
+
+-Removed OE from all the tables.
+
+-Added Difficulty column to the Recipe Table.
+
+-Added Directions column to the Recipe Table.
+
+-Changed the time stamp columns to be called created_at (Symfony will automatically add system time to these columns with no user input needed)
+
+===Recipe Module===
+
+You can now select the course, difficulty, and ethntity for a recipe.  You can also add directions for
+recipe.  The course and ethnicity does not update any db tables yet. Not sure how to do forieng key updates to another model in Symfony/Propel. Hopefully the next release I will of figured this out
+
+Version 0.0.3 02/27/06
+
+===Database Changes===
+
+No databases changes where made accept to add data so the courses and ethnicity will display. SQL dump is included.
+
+
+===Recipe Module===
+
+-Replaced repeated code with a clase in the recipe action file under the executeEdit function
+
+-Fixed an error where the difficulty was not updating the database
+
+-Added some code to the editSuccess.php template file so that the difficulty defaults in the dropdown to what the actual recipe has it set to in the database
+
+-Slowly learning how to use Many to Many.  I wrote a few functions to add to the recipe class to display what course and ethnicity a recipe is in.  Still working on being able to edit that and have it save.  Right now you have to go into the database and update the join tables.
+
+-Wrote a couple of custom classes to get rid of some repeated code.  They are located under apps/openeats/lib/changearray and column select.  I need to start adding comments to my code I will do that in the next release.
+
+Version 0.0.4 02/28/06
+
+==Recipe Module==
+
+-When you add a recipe the Course will now update the recipe_category table
+
+-When you add a recipe the ethnticity will now update the recipe_ethncity table
+
+IF you try to update a recipe that already exsits you will get an error.  I need to work on making sure that the recipe is not already there and if it is to only update the Category_ID/Ethnticy_ID column in that table and not make a new entry.
+
+Version 0.0.5 03/01/06
+
+==Recipe Module==
+
+-You can now update a recipe and change the category or ethnicity and it will update the join table
+
+
+Version 0.0.6 03/04/06
+
+==Recipe Module==
+
+-When you delete a recipe, the recoreds in the ethnicity and category table are also removed
+
+-Initial form validation is in place
+
+-Removed Serving Size from the form to create recipes.  I don't think we will end up using this in the long run.  I left the db column for it just in case we decide to come back and use this.
+
+-Removed the display of serving size
+
+Version 0.0.7 03/09/06
+
+==Database==
+
+-Created a batch load script found under /batch/load_data.php.  With a data file found under data/fixtures/ingrd.yml.  Run php load_data.php and the ingriedents table will be populated with 250+ ingriedents
+
+-Added a dev and prod db connection to databases.yml
+
+==Recipe Module==
+
+-Courses now default in the drop down menu under edit mode to what is the current course of the recipe
+
+-Ethnicity now defaults in the drop down menu under edit mode to what is the current ethnticity of the recipe
+
+-Fixed a routing issue where the production "index.php" was not working properly
+-Changed the link to the recipe to the recipe name instead of the recipe id
+
+==Symfony==
+
+-Upgraded to version 0.6.1 of Symfony
+
+
+Version 0.0.8 03/16/06
+
+==Recipe Module==
+
+-Added comments to the recipe.php code
+
+-Rewrote the category and ethnicity drop downs the value is now the ID of the column instead of the name
+
+-You can now add two ingredients to a recipe
+
+-You can view the two ingredients added to a recipe
+
+-Removed the ability to delete recipes (this will be added back into the admin interface)
+
+Version 0.0.9 04/01/06
+
+==Recipe Modlue==
+
+Changed the way ingridients are added and removed.  You can now add/remove ingridients to a new or current recipe.  You can also add additional select tags for more ingridients options.
+
+Ingredients of a current recipe now appear in a div statmenet on the edit page with a X next to them allowing you to remove them and it takes you back to the form
+
+When adding new ingredients to a current recipe, the old ingreidents do not get removed by default unless you are re-adding the same ingredient again.
+
+==Admin Module==
+
+I started some basic work on the admin interface to OpenEats
+
+==User Module==
+
+Started the first phase of having users be able to login to OpenEats
+
+Version 0.1.0 04/08/06 Developers Release
+
+==Recipe Module==
+
+showSuccess.php no longer has tables.  Two new functions added to show the quantity and measurmenet of each ingredient
+
+Rough CSS started
+
+Ajax Gif Indicator added
+
+Moved the array of options for difficulty into the module.yml file
+
+Version 0.1.1 04/10/06
+
+==Database==
+
+Added a recipe_prep column to the recipe_ingrd table to store the preparation type for an ingredient
+
+==Recipe Module==
+
+Updated the edit and show success to include the preperation for the ingredient in the recipe
+
+Increased the charceter output for the listSuccess.php when it displays the recipe description
+
+Version 0.1.2 04/23/06
+
+==Database==
+
+- CHG: Added USER_FN and USER_LN for user first name and user last name to the user table.  Changed USER_NM to USER_LOGIN in the user         table 
+
+==Symfony==
+
+- CHG: Upgraded to Symfony 0.6.2
+
+==Recipe Module==
+
+- CHG:  Changed the routing for users profile to show their user login name intead of the primary key in the table
+
+Version 0.1.3 05/01/06
+
+===User Module==
+
+- BUG: Fixed a bug in /lib/user.php in the setPassword() function.  It was using the old name for UserLogin.  I changed it from getUserNm to  getUserLogin
+
+- ENH: Created a self registration page to registar new users accounts.
+
+- ENH: Strated the validation of the registration form
+
+===Layout==
+
+= ENH: Created a Java Script effect on the main lay out to hide/unhide a div statement that allows a user to login with thier account from any page on the site
+
+Version 0.1.4 05/02/06
+
+===User Module==
+
+- ENH:  Added valdation based on login name, so that no two users can have the same login name
+
+- ENH:  Added valdation based on email so that no two users can have the same email address
+
+===Recipe Module===
+
+- ENH:  Added valdation based on recipe name so that no two recipes can have the same name
+
+Version 0.1.5 05/05/06
+
+===User Module===
+
+- CHG:  Changed the forwarded page after a user registers to the home page
+
+- CHG:  Changed the password input field label from pass1 to password in the registraionSuccess.php file. Now when a user registers they get logged in automaticly
+
+- CHG:  Changed the routing, validation, and form that adds users to be called add instead of update
+
+- ENH:  Added the ability to change your password and email on your profile page
+
+- BUG:  Fixed the getSubscriber function in myUserClass.php.  The function was calling getUserId() when it should of been calling getSubscriberId()
+
+Version 0.1.6 05/07/06
+
+===User Module===
+
+- ENH:  Added a forgot password action
+
+===Mail Module===
+
+- ENH:  Created a new module to handle the mailing of a password if it is forgotten
+
+Version 0.1.7 05/12/06
+
+===Recipe Module===
+
+- ENH:  Added a link to allow a user to store recipes
+
+Version 0.1.7.1 05/13/06
+
+===Recipe Module===
+
+- BUG:  Fixed a bug in the UserHelper.php file.  I had the primary key revesered in the select recipe_user statement
+
+Version 0.1.8 05/14/06
+
+===User Module===
+
+- BUG:  Fixed a bug in the UserHelper.php file.  I had a function that did not have the close braket on it
+
+- ENH:  Stored recipes now display in the users profile
+
+- ENH:  Users can now unstore recipes from their profile
+
+Version 0.1.9 05/16/06
+
+===Recipe===
+
+- ENH: Added more unit types in the module.yml file
+
+- ENH: Added a few more recipes to test with
+
+- ENH: Added a "side dish" catagory
+
+Version 0.2.0 05//06
+
+===User===
+
+- ENH:  Added comments to a lot of the new user module code
+
+- CHG:  Change the message that is displayed when a user unstores a recipe
+
+- ENH:  Added a new message to display if a user has not stored a recipe
+
+- CHG:  Changed the executeShow action to display other users profile if they are not the logged in user
+
+===Recipe===
+
+- ENH: Added a link to the users profile for the user that submited the recipe
+
+===Theme===
+
+- CHG:  Added the version number to the app.yml config file for a global use
+
+Version 0.2.1 05/21/06
+
+===Database===
+
+- ENH:  Added a new column to the recipe table to store the stripped title of a recipe
+
+===Recipe Module===
+
+- CHG:  Changed the default save of the recipe, now the name and the stripped title of the recipe are saved when you submit a recipe
+
+- CHG:  Changed the links to the recipe to follow a new url. They now point to the stored stripped title instead of the PK
+
+===User Module===
+
+- CHG:  Changed all the links to a recipe on a users profile to the new stripped title url
+
+Version 0.2.2 05/22/06
+
+===Database===
+
+- ENH:  Added a column to the user table to store a remember_me key
+
+===User Module===
+
+- ENH:  Added a new feature to the signIN function to create a cookie and store that key in the database.  Then this is checked to see if a valid cookie is in place and logs a user in for up to 15 days
+
+Version 0.2.3 05/23/06
+
+===Recipe Module===
+
+- BUG:  Fixed a bug where you edited or created a recipe you where forwared back to the old URL style with the recipe PK, you now go to the new URL with the stripped title of the Recipe
+
+- CHG:  Changed the link on the edit recipe page to the cancel hyperlink.  It was going back to the old URL with the PK of the Recipe.  Now it goes to the stripped title of the Recipe
+
+- CHG:  Changed the Edit, Update and GetRecipeorCreate action to use the stripnm instead of the PK 
+
+===User===
+
+- CHG:  Changed some of the verbage on the profile page of the header section.  It now displays Submited Recipes instead of "Your Submited Recipes"
+
+Version 0.2.4 05/27/06
+
+===Database===
+
+- CHG:  Added a unique index for RECIPE_STRIP_NM so that recipes can not have the same strip title of the another recipe
+
+- CHG:  Changed the name of recipe_name in the schema.xml file to reflect the actual name of the column to recipeNm.  Updated all the files to this new name
+
+- CHG:  Changed the name of recipe_desc in the schema.xml file to reflect the actual name of the column to recipeDesc.  Updated all the files to this new name
+
+- CHG:  Changed the name of preparation_time in the schema.xml file to reflect the actual name of the column to RecipePrepTm.  Updated all the files to this new name
+
+- CHG:  Changed the name of cook_time in the schema.xml file to reflect the actual name of the column to RecipeCookTm.  Updated all the files to this new name
+
+- CHG:  Changed the name of servings in the schema.xml file to reflect the actual name of the column to RecipeSrvgs.  Updated all the files to this new name
+
+- CHG:  Changed the name of directions in the schema.xml file to reflect the actual name of the column to RecipeDirections.  Updated all the files to this new name
+
+===Template===
+
+- ENH:  Added a link to the home page
+
+Version 0.2.5 05/30/06
+
+===Database===
+
+- ENH:  Added a new table to contain keywords for recipes
+
+===Template===
+
+- ENH:  Added a "sidebar" module which will display diffrent nav links depending on what part of the site is being displayed
+
+===Recipe===
+
+- ENH:  Keywords for recipes are now displayed on the side bar when you are in the recipe view
+
+- ENH:  Clicking on a keyword will allow you to see all the recipes that are associated with that keyword
+
+Version 0.2.6 05/31/06
+
+===Keyword/Recipe Modules===
+
+- ENH:  You can now add keywords to recipes and AJAX Autocomplete will display current keywords in the DB for suggestions
+
+===Keyword Module===
+
+- BUG:  Fixed a bug where the normalized title was not being saved when a new keyword was added
+
+- BUG:  Fixed a bug in _recipe.php where it was calling getRecipeKeywords and I had the function named getKeywords
+
+Version 0.2.7 06/03/06
+
+===User Module===
+
+- ENH:  Keywords that a use has added are now displayed on their profile
+
+===Keyword Module===
+
+- ENH:  A user can now remove keywords they have added to a recipe
+
+- ENH:  Added an AJAX element highlight effect when a user addes or removes a keyword
+
+Version 0.2.8 06/04/06
+
+===Keyword Module===
+
+- ENH:  After a new keyword is added the keyword value is cleared so that there is nothing in the input field
+
+===Recipe Module===
+
+- CHG:  Changed prep time to be a drop down of minutes instead of a input field
+
+Version 0.2.9 06/04/06
+
+===Recipe Module===
+
+- CHG:  Recipe Cook time now has a drop down menu for hours and minutes instead of an input box
+
+- BUG:  I added 45min for the drop down menu for minutes that I left out in the last release
+
+===Database==
+
+- CHG:  Changed all the recipes to follow the new prep and cook time so that they display properly
+
+Version 0.3.0 06/10/06
+
+===Database===
+
+- REM:  Removed the recipe_rating table
+
+- CHG:  Changed the columns in the rate table to match how I want to store the rate of recipes
+
+- ENH:  Added a new column to the recipe table to store the average rating of a recipe
+
+===Template===
+
+- BUG:  Fixed a typo in the main.css file
+
+===Recipe===
+
+- ENH:  Recipes can now be rated
+
+Version 0.3.1 06/11/06
+
+===Recipe Module===
+
+- BUG:  Fixed a bug where when you created a recipe the strip name of the recipe was not being set
+
+===Database===
+
+- ENH:  Added on delete to certian tables so when a user or recipe is deleted it will cascade and remove all of the foreign keys found for that column from other tables.
+
+- ENH:  Added the on delete cascade to the schema.xml file on tables I changed in the database
+
+Version 0.3.1.1 06/15/06
+
+===All Modules===
+
+- BUG:  Fixed a bug where Javascript helper was being called more then once on the same page causing a redeclare error
+
+===Database===
+
+- CHG:  Renamed the recipe_user to stored_recipe table so that it made more sense of what it was used for.
+
+Version 0.3.2 06/24/06
+
+===Symfony===
+
+- UPG: Upgraded Symfony from verion 0.6.2 to 0.6.3
+
+- CHG: After the upgrade some hyperlinks did not work, I changed them to meet the new guidlines of Symfony
+
+===User Module===
+
+- BUG: Fixed a bug where email was not being set if you wanted to change it.
+
+Version 0.3.3 07/04/06
+
+===Database===
+
+- CHG:  Removed a few unneed columns in the ingredient table
+
+- CHG:  Added a new column to store the users ID if a user adds and ingredient to the table
+
+===Recipe Module===
+
+- ENH:  Users can add their own ingredients to the ingredient table if it does not already exist
+
+- BUG:  Fixed a bug where all recipes where being saved as me no matter who was logged in.
+
+- CHG:  Changed the Add Row Delete row buttons to images next to each row
+
+- ENH:  The last drop down will re-popoluate with the new ingredient that a user just added
+
+- CHG:  Minor refactoring moving some of the code from the recipe action to the ingredient methods
+
+- ENH:  Added a cancel link to the add new ingredient drop down
+
+- ENH:  Moved the add new ingredient link to a diffrent area on the page so it stands out more
+
+===Templates===
+
+- CHG:  Removed the crapy field CSS colors and borders till I improve it later
+
+Version 0.3.4 07/09/06
+
+===Ingredient Module===
+
+- ENH:  Added a page where a user can also add ingredients if he is not in edit mode of a recipe
+
+===Keyword===
+
+- BUG:  Fixed a bug where an empty keyword could be set on a recipe
+
+===Recipe===
+
+- CHG:  Made the listSuccess.php to a point to a partial since the list recipe by keyword and the list recipes where both using the same code the now both share a partial to get rid of duplicate code
+
+- CHG:  A keyword can now be added when to a recipe when a recipe is first being created or edited
+
+Version 0.3.5 07/20/06
+
+===Ingredient Module===
+
+- ENH:  A little bit of security has been added, you can only edit a recipe if your auth level is set to admin or your are the creator of the recipe
+
+- CHG:  The link to edit a recipe is only displayed if your an admin or you created the recipe
+
+- BUG:  Fixed a bug where a user could add a blank ingredient to the database
+
+===Templates===
+
+- ENH/BUG:  Fixed all the documents to be XHTML valid, had to close a few tags I left opened and move some elements around
+
+===Recipe===
+
+- ENH:  After getting everything XHTML compliant fillin works for the recipe so if you fail the form the stuff you just typed does not disaper anymore big help there
+
+Version 0.3.6 07/25/06
+
+===Recipe Module===
+
+- BUG: Fixed a bug where if you where not logged in and tried to store a recipe the login screen was not droping down
+
+- BUG: Renamed the Recipe directory to recipe, this fixed a bug that was not allowing the site to run properly on Unix.  Also fixed all references to links to Recipe to recipe
+
+- CHG:  Now if you click add recipe and you are not signed in, you will be directed to the login page
+
+===Ingredient Module===
+
+- BUG: Renamed the Ingredient directory to ingredient, this fixed a bug that was not allowing the site to run properly on Unix.  Also fixed all references to links to Ingredient to ingredient
+
+===Routing===
+
+- BUG:  Fixed a bug in the routing where if you created or edited a recipe it was trying to go to the show module  because of a misplaced routing rule
+
+Version 0.3.7 08/13/06
+
+===Headline Module===
+
+- ENH:  Added a new module to store news information, so I will have a place to write site changes and other going ons about the site.  The editor also uses the fckeditor, to easily create HTML news items. This editor may be introduced into other sections of the site soon.
+
+===Database===
+
+- ENH:  Added the table to support the new headline module.
+
+Version 0.3.8 08/25/06
+
+===Headline Module===
+
+- ENH:  Added an RSS feed for new headlines
+
+- CHG:  Headlines are now displayed newist first
+
+===Recipe===
+
+- ENH:  Added a print layout view for recipes
+
+- ENH:  Added a few more course types
+
+- ENH:  Added a few more ethnticties
+
+- BUG:  Fixed a routing problem with the update action
+
+Version 0.3.9 10/12/06
+
+===Database===
+
+- CHG: Renamed the category and recipe_category tables to course and recipe_course to better go along with the data stored in those tables
+
+- CHG:  Changed the headline table to innodb type instead of mysaim
+
+===Recipe Module===
+
+- ENH: Increased the text box size for the recipe directions
+
+===User Module===
+
+- BUG/CHG:  When you failed validation on updating your profile your keywords and stored recipes would error out. I created a new private function that is now called in the show action of the profile and the validate action
+
+- CHG:  I moved the code in the layout.php that allowed you to login from any page, into a component.  This way there are not several lines in the layout.php file of code, keeping the file clean
+
+===Documentation===
+
+- ENH:  Added a picture and xml file created wiht dbdesigner4 that lays out the database design thus far. You need DBdesigner4 to view the XML
+
+- ENH:  Added a whole bunch of comments to a lot of the code
+
+===Template==
+
+- ENH:  Added a footer and removed the version and Appliation name from the top of every page and moved it to the footer
+
+Version 0.4.0 10/22/06
+
+===User Module===
+
+- CHG: Moved the login links to a seperate partial so it can be used in various sidebar componets
+
+===Side Bar Module===
+
+- ENH:  Added a new side bar for the front page
+
+===Front Pgae Module===
+
+- ENH: Created a rough front page module that will be used as the front page to the site
+
+- ENH:  Created an about page template that later will tell more detials about the projectg
+
+===Template===
+
+- ENH:  The site now has a TEMPLATED baseed on Aqueos found at http://www.sixshootermedia.com/  It is far from done but it is a really good start based on what we use to have.
+
+Version 0.4.1 10/28/06
+
+===User Module===
+
+- BUG:  Renamed _logindropdown.php to _LoginDropDown.php so that it will work on *Nix mahcines where are case sensitive
+
+- BUG:  Fixed a bug where you could not view another users keywords in their profile. Changed getUser()->getSubscriberId() (which caught the current logged in users ID) to subscriber->getUserId() which got the ID of the users profile you where in
+
+
+===Template===
+
+- BUG:  Fixed the recipe print page, to not include the green background which is on the rest of the pages. It now ignores the layout.css
+
+- CHG:  The background color for the nav bar was blue in the orignal tempale, I changed it to the orange color
+
+- EHN:  The logo now links to the front page
+
+- CHG:  Changed the favicon to parsely
+
+- CHG:  Changed the color of the links in the side bar so that they stand out more
+
+- CHG:  Changed the font size of the H2 in the side bar so it would not wrap
+
+===Sidebar Module===
+
+- CHG:  Changed the layout of all the sidebars
+
+- CHG:  Moved the shared links in all the side bars to partials to elimate repated code
+
+===Recipe Module===
+
+- CHG:  Relocated the "Rate Recipe" to the top of the page
+
+- ENH:  Added the current "Rate Star" graphic next to the tile of the recipe on the recipe list page, and on recipes stored in your profile
+
+- CHG:  Recipes are sorted by newist first on the list page
+
+===Front Page Module===
+
+- ENH:  Finished the about page
+
+Version 0.4.2 11/13/06
+
+===Keyword Module===
+
+- BUG:  Fixed a bug on the show recipes by keyword page, it could not locate the partial for _rated because I needed to declare what module to locate the partial
+
+===Template===
+
+- BUG:  Fixed a handful of xhtml validation issues in several modules
+
+- CHG:  Changed the content.jpg color from grey to a light shade of green
+
+===Database===
+
+- CHG:  Removed the difficulty column from the recipe table
+
+- ENH:  Added a "base" column to the recipe table to indicate what the base of the recipe is i.e beef, pork, veggies
+
+- ENH:  Added more course types
+
+===Recipe Module===
+
+- CHG:  Removed the difficulty column from all recipe pages.  I felt it was something most people would not use
+
+- ENH:  Added a base selection when you create a recipe that allows you to pick what the main ingredient for the recipe is.
+
+- ENH:  Added a browse by base page
+
+- ENH: Added a browse by Course page
+
+===Sidebar Module===
+
+- ENH: Added a new Browse side bar module to browse recipes based on course and base
+
+===Frontpage Module===
+
+- ENH: Added a rough outline disclaimer page
+
+Version 0.4.3 11/20/06
+
+===Recipe Module===
+
+- ENH: Added a browse by ethnicity page
+
+- ENH: All the browse by pages now return recipes sorted by rating
+
+- ENH: Changed all the browse by pages to have the _browse sidebar
+
+- CHG: Added Top Recipes, and Popular Keyword section to the Recipe main page
+
+===Sidebar Module===
+
+- ENH:  Added the _nav partial to the browse sidebar
+
+===User Module===
+
+- CHG: Changed the layout of the registration page, it looks a lot cleaner now
+
+- CHG: Changed the layout of the sign in page
+
+===Keyword Module===
+
+- ENH:  Added a list all keyword page to show all the keywords and how many times that keyword is repeated
+
+Version 0.4.4 12/10/06
+
+===User Module===
+
+- BUG: Fixed a bug for remember me some how the filter was removed from fitlers.yml file for this to work
+
+- CHG:  Improved the template for login, and added the forgot password template with this template
+
+===Recipe Module===
+
+- CHG: Combied the three methods in the Recipe Base class that retrived the informaiton about an ingredient (qty, msmrt, prep) into one method in the RecipeIngrdPeer class where it belongs. Took the amount of queries from 42 to 18 to display one paticular recipe
+
+===Symfony FrameWork===
+
+- CHG: Upgraded to the 1.0 Beta 1 of the frame work
+
+===All Modules===
+
+- BUG:  The upgrade was less kind do my early days of bad coding.  A lot of methods had to be changed/moved and down properly I had static methods in Base classes and non static in Peer classes.
+
+Version 0.4.5 12/27/06
+
+===User Module===
+
+- BUG:  Background was not being displayed propel on the sign up and register forms because of using float, I corrected this
+
+- CHG:  Improved the User Profile page to match the template of the site
+
+- BUG: Fixed a bug in the stored recipe unordered list.  The div was closed before the <li>
+
+- CHG:  Changed the validators for the add user and update user forms to use sfUniqueprople validator instead of my custom validator 
+
+===Symfony FrameWork===
+
+- CHG: Upgraded to the 1.0 Beta 2 of the frame work
+
+===Recipe Module===
+
+- BUG: Fixed a bug in the print_success.php template it was calling the qty, msmrt settings the old way
+
+- BUG:  Fixed a bug with the print template, I included -main to not be useds for css on the print_success.php
+
+- ENH:  Complete rewrote the editSuccess.php template. It matches the current template, there are no longer tables and the add new ingriedent ajax function has been replaced.  The add new ingriedent row now is an AJAX function instead of a form validation hack
+
+===Template===
+
+- ENH: Added a link to the add ingredient page in the header nav.
+
+Version 0.4.6 12/30/06
+
+
+===Symfony FrameWork===
+
+- BUG:  Changed the symfony/lib/TagHelper.php _TagOption function to return values with htmlspecialchar() this will help prevent xss exploits and turn submited HTML to encoded values
+
+===Headline Module/Symfony===
+
+- BUG:  Applied a patch to a library in the framework that was causing the date to be inproperly displayed in the headline module
+
+- CHG:  Changed the editSuccess and listSuccess pages in the headline module to match the overall site look
+
+===Recipe Module===
+
+- BUG:  Removed tabindex from all the elements in editSuccess.php this was causing issues when new ingreident rows where added with the same tabindex value
+
+- ENH:  Increased the input box size on QTY and MSMRT and seperated the new ingreident rows a bit to avoid selecting the wrong drop down menu
+
+- ENH:  Added a wforms javascript library to the editSuccess.php file.
+
+- ENH:  Using wforms field hints are displayed when an input field is focused on
+
+===DB===
+
+- ENH: Added a USER_IP and USER_LASTLOGIN fields to the user table to store the users ip and last login time
+
+===User Module===
+
+- ENH:  Modified the signIn() function in the myUser.class.php file to save the users IP and login time to the user table
+
+Version 0.4.7 01/13/07
+
+===Recipe Module===
+
+- CHG:  Improved the showSuccess.php template for the recipe module it now has a better flow
+
+- ENH:  Added an Ajax action to allow a user to check a recipe name to see if it is in use prior to submitting a recipe
+
+- CHG:  Changed the update action to check the recipe name if it is in use already and if it is it will append the users name to the name of the recipe. This will prevent the recipe from failing validation if the recpie name is in use
+
+- CHG: Lowered somed of the validation requirments for the submiting recipes
+
+===Ingredient Module===
+
+- CHG: Changed the addIngredient page to require you to be logged in to add a new ingredient
+
+===Symfony Framework===
+
+- ENH:  Added the new sfControlPanel Plugin
+
+- CHG: Upgraded to Symfony 1.0 Beta3
+
+===Keyword Plugin===
+
+- BUG:  Fixed a bug with the auto complete for the keyword input
+
+===Template===
+
+- ENH: Added my own 404 error page based on the one that ships with Symfony
+
+Version 0.4.8 01/25/07
+
+===Feed Module===
+
+- ENH: Added slots in the layout.php to load different RSS feeds based on the module you are in.
+
+
+===Symfony Framework===
+
+- ENH: Upgraded to Symfony 1.0 beta 4
+
+===Recipe Module===
+
+- ENH: Users can now upload picutres to their recipes
+
+===Template===
+
+- BUG: Fixed some annoying IE CSS issues the site should look a bit better in IE now
+
+- CHG: Cleaned up the CSS code
+
+- CHG: Improved a few things in the overall template.
+
+Version 0.4.9 02/15/07
+
+===Symfony Framework===
+
+- ENH: Upgraded to Symfony 1.0 RC2
+
+===Admin App===
+
+- ENH: Added a new admin backend application along with some basic admin modules to help support the site on the backend
+
+====All====
+
+- CHG: Doing clean up, removing old files that are no longer a part of the project that have become cruft
+
+===Doc===
+
+- ENH: Updated the database diagram
+
+===Keyword Module===
+
+- ENH: Created a all keyword page which list all the keywords and how many recipes have that keyword
+
+===Recipe Module===
+
+- ENH: Added a link to the all keyword page under Popular Keywords and on the recipe side bar
+
+Version 0.5.0 02/26/07
+
+===Database===
+
+- CHG: Modified the recipe_comment table for the new comment section for recipes
+
+
+===All Modules===
+
+- ENH:  Output is now escaped to prevent XSS attacks
+
+===Symfony Framework===
+
+- ENH:  Upgraded to Symfony 1.0 stable release
+
+===Comment Module===
+
+- ENH: Added a comment module to allow users to add comments to recipes
+
+- CHG: The user name in the comment now links to the user profile
+
+- CHG:  Changed the header in the ShowComment.php page that displays the comments to include the title of the recipe
+
+===Front Page Module===
+
+- ENH:  Started a FAQ page
+
+
+Version 0.5.1 03/11/07
+
+===Recipe Module===
+
+- BUG: Fixed a bug where a recipe would not save unless you attached a picture to the recipe
+
+- BUG; When a new comment was added the highlight visual effect was not showing up because I have a background color assigned to the comment.  I replaced the highlight effect with a drop down effect that I like better.
+
+===User Module===
+
+- BUG: A user could not reset their password and have it emailed to them, the code that saved their new random password was calling the old function of saving passwords that I replaced a while ago, I have updated the action.
+
+===Database===
+
+- ENH:  Added a new table to store recipes that have been reported to the admin by the user
+
+- ENH:  Added a new column to the recipe table to store the amount of times a recipe has been reported by a user
+
+- ENH:  Added foreign key on delete relationships for the comment and report tables to the recipe table
+
+===Moderator Module===
+
+- ENH: Users can now report recipes that are inappropriate
+
+- ENH: Users who have the authlvl of moderator can reset a reported recipe or remove a reported recipe
+
+Version 0.5.2 03/17/07
+
+===Keyword Module===
+
+- CHG:  A user can add as many keywords at one time now by seperating them with a space instead of adding only one at a time
+
+===Search Engine===
+
+- ENH: Added the Zend Lucene libs into the symfony framework
+
+- ENH: Created a helper class to create the index, and update the index when a recipe is changed, removed or added
+
+- ENH: Modified all the actions that update or remove a recipe to udpate the index for the search engine
+
+- ENH:  Created a basic search method to allow for all content searching
+
+- ENH: Created a search result display page
+
+- ENH: Created an advance search method to allow for detailed search of all fields
+
+Version 0.5.4 03/25/07
+
+===Search Engine===
+
+- ENH: Added the recipe base, course, and ethniticity to the search engine. Created new methods to get the recipe course and ethnicity
+
+- ENH: Added a link to the users profile page on the search results page of the searched recipes
+
+- ENH: Created a SearchIndex method inside the search helper to remove repeated code in the recipe action class
+
+- BUG: Zend Lucene does not support wild cards at this time so I check the query and strip them prior to submiting or Zend will display an ugly error
+
+Version 0.5.5 04/08/07
+
+===Recipe Module===
+
+- ENH: Added the abilty for users to be able to email recipes
+
+===Moderator Module===
+
+- ENH: Added a link for moderators to be able to rebuild the search index
+
+===Keyword Module===
+
+- ENH: Added a related keyword method to find keywords of recipes with the same keyword that is being shown
+
+===Sidebar Module===
+
+- ENH: Added _ListRelated to show the related keywords of recipes
+
+Version 0.5.6 04/15/07
+
+===Keyword Module===
+
+- BUG: Keywords show up as the un-normalized keyword on a recipe if you where the one that added the keyword.  I fixed the query in the User.php class to pull the normalized keyword instead of the unnormalized one.
+
+- BUG: Keywords where being displayed as unmormalized if they where they keywords you added, fixed the method to pull back the normalized keyword.
+
+===All===
+
+- ENH: Added proper titles to all the pages
+
+- ENH: Added meta keywords
+
+===Recipe===
+
+- BUG: Recipes being emailed where not being sent in html format.  Correct that issue
+
+===Error Module===
+
+- ENH: Created custom 500, disabled, unavailable and login error pages
+
+Version 0.5.7 04/26/07
+
+===Symfony Framework===
+
+- ENH: Upgraded to Symfony 1.0.2
+
+- ENH: Added a check in the config/config.php file to see if I am on Mac or Linux to set the proper env varialbes for Symfony
+
+===Plugins===
+
+- ENH: Upgraded all the symfony plugins, Zend Search, and Fckeditor
+
+===DB===
+
+- CHG:  Removed the Many to Many tables for Ethnicity and Course and made it a one to many relationship
+
+===Recipe Module==
+
+- CHG: Changed all the actions and classes for ethnicity and courses from many to many to one to many
+
+Version 0.5.8 06/10/07
+
+===Recipe Module===
+
+- ENH: Improved the email recipe template
+
+===Symfony FrameWork==
+
+- ENH: Upgraded to Symfony 1.0.3
+
+==DB==
+
+- BUG: Fixed all the databases foreign key issues where things would not get updated or removed if a foreign key relationship existed between the tables.
+
+==Docs==
+
+- ENH: Added a better installation document
+
+Version 0.5.9 07/01/07
+
+==Recipe Module==
+
+- BUG:  Fixed a bug where the picture would not upload if you added one to a recipe
+
+- ENH:  Added a java script tool tip library.  The links to recipes now show the picture of the recipe when you hover over the link
+
+- ENH: Added a information tooltip to the prep field on edit/add recipe form to explain what the field is used for
+
+- ENH:  Added icons for print, email, edit, and store links on the recipe show page
+
+- CHG: Moved the vote.jsp library from being on every page on the site to just loading on the show recipe page which is the only place it is used
+
+- BUG: Fixed a bug where if several users had the same keyword on a recipe, and the ADMIN wanted to remove the keyword, it only remove the first keyword found and not all the other users who assigned the same keyword to the recipe
+
+==All==
+
+- ENH: Did a whole site function test
+
+===Symfony Framework==
+
+- ENH: Upgraded to symfony version 1.0.5
+
+Version 0.6.0 08/27/07
+
+===Search===
+
+-ENH: Upgraded to Zend Search 1.0
+
+-ENH: Added the picture java script tooltip to the search results when you hover over a title of a recipe found in a search.
+
+===Recipe Module===
+
+- ENH: Combined the suggestions and comments area into one page on the recipe show page so that you don't have to click several times and hit the back button just to view all the comments and suggestions for a recipe.  This also gets rid of a bunch of repeated code I had for the show comments and show suggestion pages
+
+- ENH:  Added a Markdown Syntax plugin to allow people to use the Markdown syntax when you create a recipe for entering directions
+
+Version 0.6.1 09/09/07
+
+===Recipe Module===
+
+- CHG:  I changed the getIngrd() function in recipe.php to return an array of the objects from the recipe_ingrd table that can be used to get the name, quantity, measurement, and preparation of an ingredient with only one function instead of the two "hacked" functions I had before.  I updated the recipeEdit, recipeShow, and SearchIndex functions to use the new function
+
+- ENH: When a user edits one of their recipes they can now remove the picture they uploaded and replace it with a new one
+
+===Admin Module==
+
+- ENH:  Added the ability to add, view, and remove the picture attached to a recipe for the Admin module
+
+===FrontPage Module===
+
+-ENH:  Added pictures and links to the 6 newest recipes on the frontpage
+
+===symfony Framework===
+
+-ENH: Upgraded to 1.0.7 of symfony
+
+Version 0.6.2 09/26/07
+
+===User Module===
+
+- ENH: Added an "about" section to the users profile to allow users to enter "about me" information
+- CHG: Keywords now display in more of a "cloud" fashion on a users profile page instead of just one long list
+- ENH: Submitted Recipes now shows the total of recipes submitted by a user 
+- CHG: Changed the way that a users contributed recipes show up on their profile, their four most recent recipes are displayed with a  picture and a description under each one with a link to show all their recipes
+- CHG: Stored recipes now show up like the new contributed recipes, where it will show four of your stored recipes with their picture then a link to click to see all your stored recipes  
+
+Version 0.6.3 10/21/07
+
+===Template===
+
+- CHG: Changed the link to Top Recipes to "Add Recipes" in the upper Nav bar, this should make it easier for users to find how to add recipes instead of just having it in the sidebar
+
+- ENH: Added a link to Add Ingredients in the side nav bar
+
+===symfony Framework==
+
+- ENH Upgraded to 1.0.8 of symfony
+
+===FrontPage Module===
+
+- CHG:  The front page text is not longer static, it is now stored in the headline table, allowing a user to change it to anything they want
+- ENH:  Added a editIndex method to allow you to edit the text on the frontpage
+- CHG:  The about page is no longer static, you can now edit it and change it to what you want
+- CHG:  The FAQ page is no longer static, you can now edit it and change it to what you want
+
+===Docs===
+
+- ENH: Updated the install doc with how to put OpenEats in debug mode to help trouble shoot issues
+- ENH: Added an upgrade doc for users who want to upgrade to the newest release
+
+===Database===
+
+- ENH: Added a HEADLINE_TYPE text field to the headline table to store the type of headline, this is used to pull the information from the database for the about, frontpage, and FAQ page
+
+Version 0.6.4(CPerry) 11/24/07
+
+===Sidebar Module===
+
+- CHG: Limited the amount of headlines shown in the sidebar nav bar to 5
+
+===Recipe Module===
+
+- ENH: Added a new 'notes' feature that allows a user to add personal notes to any recipe they want that only the can access when viewing that recipe
+- BUG: A bug was found and fixed! By a user of OpenEats, Chad Parry. Validation on Recipe Directions was not display the error if it failed.  The code was added to display the validation error for this element
+
+- ENH: Major enhancement made by Chad Perry, to the ingredients section.  Now instead of the clunky drop down box to select ingredients, you have a nice auto-complete field that pulls up the ingredients based on what you are typing
+
+- ENH:  Yet another enhancement made by Chad, instead of having to click the "plus" sign to add a new row for adding ingredients, a new row is added automatically after you select an ingredient on the previous row.
+
+- ENH:  Chad also allows you to add new ingredients just by typing in the ingredient filed if the auto complete does not find an ingredient it will add the one you typed in.
+
+===Search Module===
+
+- BUG: A bug was found and fixed! By a user of OpenEats, Chad Parry.  If the Search index was not created then a lot of the search functions would fail.  Chad added a private function to check if the index is there and if it isn't to create it.
+
+Version 0.6.5 12/06/07
+
+===Template===
+
+- EHN:  Thanks to Chad Perry, the login box now gets focus when you click "login" instead of having someone have to hunt for it if the top of the screen is out of range 
+
+===Recipe Module===
+
+- ENH:  Chad Perry made the preparation field of the edit recipe page have autocomplete functions
+
+- ENH:  Added users notes to the print template so that they are printed with the recipe
+
+- CHG:  Changes a the border around the recipe in the print css file 
+
+- ENH:  Added Chad Perry's code to store the sequence ingredients are added so that they are displayed in the same order that they where added in
+
+===symfony framework==
+
+- ENH: Upgraded to version 1.0.9 of symfony
+
+Version 0.6.6 12/22/07
+
+===Planner Module===
+
+- ENH:  Added validation on the date field when a user adds a recipe to their planner
+
+- ENH:  Added an icon and changed the link to the planner to say "schedule" on the tool bar
+
+- ENH:  The last prepared date of a recipe shows is now displayed on the "ShowSuccess.php" page for recipes 
+
+===symfony framework===
+
+- ENH: Upgraded to 1.0.10 of symfony
+
+===Recipe Module===
+ 
+- CHG:  Due to an overwhelming request the prep and ingredients fields have been swapped so that prep comes first
+
+- ENH:  If a recipe was not found in a "Course, Ethnicity, Base" you will now be informed a recipe was not a found a be presented with a link to add a recipe
+
+===Template===
+
+- CHG: The font is now easier to read on the edit recipe page when entering text in input boxes and selecting text from drop down boxes
+
+Version 0.6.7 02/03/08
+
+===Database===
+
+- CHG:  User login names have been increased from allowing 10 characters to allowing 20.
+
+- ENH:  Added the menu table to store users created menus
+
+- ENH:  Added the menu_id field to the planner table to allow menus to be added to a users planner
+
+===Recipe Module===
+
+- BUG:  Some how course and ethnicity where removed as being required and if a user didn't select them the recipe would fail, I think this need to be required for organizing the recipes so I have added these fields as required and to the validation check
+
+- ENH:  Copied Chad Parry's code for displaying the ingredients to a recipe in edit mode in the same area that you add ingredients
+
+===Config===
+
+- ENH:  Added a .htaccess file for users who want to run OpenEats off of their web root instead of creating a Vhost also changed some of the graphics locations in the css files to allow for this
+
+===Template===
+
+- BUG: Fixed a bug where the page that is displayed if an internal server error (500 error) was not being displayed properly
+
+===Menu Module===
+
+- ENH: This is the first release of the menu module you can create menus and then add recipes to the menus along with adding menus to your meal planner
+
+
+
+Version 0.6.8 03/01/08
+
+===Menu Module===
+
+- BUG:  If a course was not selected when adding a recipe to a menu the page would fail.  I have changed it so that if you do not add a course it will add the course that is assigned to the recipe that you are trying to add to the menu
+
+- ENH: Added a menu icon to the recipe nav bar for the "add to menu" link
+
+- ENH: Added validation for the name of the menu you are required to add it now
+
+- ENH: Menus now show in the users profile page
+
+- ENH: Added a link to the recipes from the menus
+
+- ENH: You can now create a new menu that includes the recipe you selected when you add a recipe to a menu from the recipe show page
+
+===Framework===
+
+- UPG: Upgraded the frame work to symfony version 1.0.11
+
+===Recipe Module===
+
+- CHG: Changed the course names
+
+- ENH: Added a link to browse by recipes
+
+_ ENH: Added a browse by ratings page
+
+Version 0.6.9 04/05/08
+
+===Framework===
+
+- ENH: Updated all the form validators to follow the symfony 1.0 standard
+
+- CHG: Changed the routes for editing of menus and grocery list to be prettier 
+
+===Headline Module===
+
+- ENH: Added a delete function to allow admins to remove headlines
+
+- CHG: Upgraded to the new version of fckedtior
+
+- ENH: Added a top nav bar to the headlines with links to edit, create, and delete headlines
+
+===Grocery Module===
+
+- ENH: This is the first release of the new grocery module you can only do basic things such as create and view grocery lists
+you can't add recipes to the grocery list yet
+
+Version 1.0Beta1 11/22/08
+
+===Framework===
+
+- UPG: Upgraded to symfony version 1.0.18
+
+===User Module===
+
+- ENH: Add an "about" section for the user 
+- ENH: Cleaned up the "keyword" section instead of having one long list
+- ENH: Next to the Submitted Recipes title show the amount of recipes the user has submitted 
+- ENH: Redesigned the user profile page into separate sections
+
+===Search Module===
+
+- UPG: Upgraded to Zend Lucene 1.0 search engine
+- ENH: Added Wild card search
+
+===Grocery Module===
+
+- ENH: Add recipes to the grocery list
+- ENH: Create a master list users can always use to add to new recipe list
+- ENH: Create a "pantry" or exclude list to allow users to exclude items being added to their list
+- ENH: Add the short cut bar to all grocery list items to get to all the other types of grocery lists
+- ENH: Limit the amount of grocery list to 10
+- ENH :add a delete link next to the grocery title on the grocery list page for fast deletion
+- ENH: Add msmrt to the grocery preview on the list page
+- BUG: The print grocery list does not show the msrmt so add that to the print view
+- ENH: Allow grocery list to be emailed
+
+===Planner Module===
+
+- ENH: Open up the planner by default so everyone can see everyone else's meal planner
+- ENH: Allow users to mark planners as private
+
+===Menu Module===
+
+- ENH: Open up the menus by default so everyone can see everyone else's menus
+- ENH: Allow users to mark menu's as private
+
+===RSS Feeds===
+
+- BUG: Fix the bug that made all the RSS feeds break, I upgraded to a new rss feed plugin
+
+===Code===
+
+- BUG: Fixed a ton o' bugs
+- ENH: Removed code that no longer was used
+- ENH: Refactored code 
+- ENH: Removed repeat code 
+
+===Installer===
+
+- ENH: Created a very basic alpha version of an installer that should work on most *nix systems
+- ENH: Improved OpenEats to run under a subdir instead of out of a webroot
+
+===Documentation===
+
+- ENH: Corrected a lot of documentation mistakes
+
+===Recipe Module===
+
+ENH: The msmrt field now is auto complete
+
+===FrontPage Module===
+
+- ENH: Disclaimer, FAQ, and the About page can not be edited directly in the application instead of editing the html files.
+
+Version 1.0Beta2 11/28/08
+
+===Planner Module===
+
+- BUG: Since changing the planner to be marked private, you could no longer go back by months or forward by months this bug was fixed this was because the links where not passing the users login name I had to change it so that it would
+
+===Installer===
+
+- BUG: The installer would not run if you had a php.ini setting output_buffering to off. I set this in the .htaccess file for the installer so by default it is on
+
+Version 1.0RC1 12/28/08
+
+===Recipe Module===
+
+- BUG:  Fixed a bug where if an admin user modified another users recipe, then the admin user would become the owner of the recipe
+- BUG: Fixed a bug that would allow empty keywords to be saved to the database
+
+===Search Module===
+
+- BUG: Fixed a bug where a search index would not be created if the search_index folder was missing
+- BUG: Fixed a bug where if you rated a recipe, the search index didn't get updated to reflect the new rate of the recipe
+
+==Admin Module==
+
+- BUG: The admin module is not really maintained any more and does not really work so I am removing it from this release and I will think of a better way to do it with the next major release...1.1
+
+===Menu Module==
+-BUG: Fixed a bug where the user name was not passed to the Menu List action after a user deleted a menu
+
+===Keyword Module===
+
+-ENH: Change the keyword separation from a space to a comma to allow for common two word keywords such as peanut butter
+
+==Installer===
+
+-ENH: Rewrote the entire installer from scratch this new version should work on almost any computer with a lot less issues
+
+===Documentation===
+
+-ENH: Rewrote the install documentation to make it easier to understand
+
+Version 1.0 01/13/09
+
+===Theme===
+
+-BUG: The CSS layout has been improved by Nick M. and works in all browsers
+
+===Recipe Module===
+
+-ENH: Auto type ahead has been improved by only displaying the top five matches and only searching at the front of the word and not the whole phrase
+
+===Database==
+
+-BUG: Auto increment was not set for the primary ID fields and this was causing all new items to have a primary ID of zero.  This caused a lot of weirdness in OpenEats. Such as if you added a new ingredient to a recipe it would then show up on all recipes you create in the future.
+
+Version 1.1 02/14/09
+
+===Recipe===
+
+-ENH: The same ingredient can now be added to a recipe as many times as you would like.  The limitation of one ingredient only being able to be added to a recipe once has been removed.
+-ENH: Added a recipe history to the nav bar so the last four recipes you view will be saved in the nav bar for quick and easy access
+
+===FrameWork===
+
+- UPG: Upgraded to symfony 1.0.19
+
+===Menu===
+
+-BUG: Fixed a bug where you where not properly redirected to the show menu page after you added a recipe to an existing menu because your user name was not being passed
+-BUG: The schedule link was being displayed when a user would look at another users menu this should not be allowed only the creator of the menu should schedule a menu
+-ENH: Added a link to delete menus on the list menu page
+-ENH: Removed the ability for the administrator to edit anyones menu
+-ENH: You can now add items to a menu that are not recipes in Openeats
+-ENH: When you add a OpenEats recipe to a menu, the description field on the menu form will automatically populate with that recipes description allowing you to change it specifically for your menu.
+-BUG: Fixed a but where if you added a recipe to a new menu using the "add to" feature, the last_seq var was still being set to 0 which would cause the ajax that generates a new row after each menu item you add to not create a new line
+
+===Database===
+
+-ENH: Increased the headline_body to a longtext attribute so that you can fit more stuff in it
+-BUG: Grocery List items qty field was set to tinyint which would not allow fratctions for qtys to show up I changed it to a varchar
+-BUG: Fixed a bug that was causing recipe pictures to not show up if the recipe had a really long name because the picture field in the database table was not set to hold really long names.  
+
+===User Module===
+-ENH: Added the most recent comments and ratings for recipes that a user has done on the users profile page
+
+===Grocery List Module===
+-BUG: Fixed a but where if you added a recipe to a new menu using the "add to" feature, the last_seq var was still being set to 0 which would cause the ajax that generates a new row after each menu item you add to not create a new line
+
+===Installer===
+-ENH: The installer includes a way to set your email in the app.yml file that then is read by all the error pages for your email address
+-ENH: An update script was created to help with all future upgrades of OpenEats
+
+Version 1.1.1 03/22/09
+
+===Database===
+
+- BUG: Fixed a major bug in the database schema file that if you installed a fresh copy of 1.1 you would not be able to add recipes
+
+Version 1.2 04/08/09
+
+===Recipe Module===
+
+- BUG: Markdown text was not being displayed in the print template.
+
+===Framework===
+
+- UPG: Upgraded to symfony 1.0.20
+
+===Admin Interface===
+
+- ENH: The Admin interface is back.  I created a new admin module that handles several smaller modules to control the backend of the site.
+  -ClearCache:  Clear cache allows you to remove temporary cache files, you use to have to remove the directory by hand from the filesystem now you can click a link in the admin module
+  -Ingredient Admin:  You can edit or remove ingredients from your site
+  -Course Admin:  You can edit add or remove courses from your site
+  -Ethnicity Admin: You can edit add or remove ethnicity from your site
+  -User Admin:  You can edit or delete users from your site 
+  -Recipe Admin: You can edit and change the owner of recipes on your site along with removing them now
+
+===Sidebar Module===
+- ENH: Added a new admin side bar and modified the moderator side bar
+

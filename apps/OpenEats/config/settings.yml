@@ -1,0 +1,100 @@
+prod:
+  .settings:
+    no_script_name:           off
+    error_reporting:          257
+        
+
+dev:
+  .settings:
+    # E_ALL | E_STRICT = 4095
+    error_reporting:        4095
+    web_debug:              on
+    cache:                  off
+    stats:                  off
+    no_script_name:         off
+    etag:                   off
+    enabled_modules:        [default, sfControlPanel]
+test:
+  .settings:
+    # E_ALL | E_STRICT & ~E_NOTICE = 2047
+    error_reporting:        2047
+    cache:                  off
+    stats:                  off
+    web_debug:              off
+    no_script_name:         off
+    etag:                   off
+
+all:
+   .actions:
+#    default_module:         default
+#    default_action:         index
+#
+     error_404_module:       errors
+#    error_404_action:       error404
+#
+     login_module:           errors
+#    login_action:           login
+#
+     module_disabled_module: errors
+#    module_disabled_action: disabled
+#
+     secure_module:          errors
+#    secure_action:          secure
+#
+     unavailable_module:     errors
+#    unavailable_action:     unavailable
+#
+   .settings:
+#    available:              on
+     timeout:                1800
+     escaping_strategy:      both
+     escaping_method:        ESC_ENTITIES
+#
+#    module_accessor:        module
+#    action_accessor:        action
+#
+#    path_info_array:        SERVER
+#    path_info_key:          PATH_INFO
+#
+#    url_format:             PATH
+#
+#    use_database:           on
+#
+#    use_security:           on
+#
+#    compressed:             on
+#
+#     tidy:                   on
+#
+#    i18n:                   off
+#
+#    timeout:                1800
+#
+     suffix:                 
+#
+#    standard_helpers:       [Partial, Cache, Form]
+#
+#    max_forwards:           5
+#
+#    web_debug:              off
+#
+#    cache:                  on
+#    default_cache_lifetime: 86400
+#
+#    no_script_name:         on
+#
+#    stats:                  off
+#
+#    # E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR | E_USER_ERROR = 337
+#    error_reporting:        337
+#
+     rich_text_fck_js_dir:   js/FCKeditor
+#    safe_slot:              on
+#
+#    use_flash:              on
+#
+#    enabled_modules:        [default]
+#
+#    strip_comments:         off
+#
+#    etag:                   on

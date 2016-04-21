@@ -1,0 +1,1 @@
+<?php include_partial('suggestion/suggestion', array('suggestion' => $suggestion, 'nb_suggestion' => $nb_suggestion)) ?>

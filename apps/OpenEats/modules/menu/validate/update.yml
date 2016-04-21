@@ -1,0 +1,10 @@
+fields:
+    menu_nm:
+        required:
+            msg: Please Enter a name for your menu
+
+
+fillin:
+  enabled:  on
+  param:
+    name: update            

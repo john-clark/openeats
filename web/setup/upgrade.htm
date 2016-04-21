@@ -1,0 +1,42 @@
+<head>
+<style type="text/css">
+<!--
+h1, h2, h3, h4, h5, h6 {
+color:#9BBB38;
+font-family:"Lucida Grande",Tahoma,Arial,sans-serif;
+margin:1.2em 0;
+}
+body {
+background:	#E8E8CE; 
+}
+div {
+  background: #F9F993;
+  width: 400px;
+  padding: 5px;
+  border: 1px solid #7A7A7A;
+}
+!-->
+</style>
+<title>OpenEats Upgrade Documentation</title>
+</head>
+
+<div class='note'><h3>Notice!</h3>To see the most up to date upgrade document please go to <a href="http://openeats.wordpress.com/install">http://openeats.wordpress.com/upgrade</a></div>
+
+<h2>Upgrading OpenEats</h2>
+With OpenEats 1.1 a new upgrade script was introduced to help automate some of the task with OpenEats.  Follow the following directions to upgrade OpenEats using the new upgrade script.
+<ol>
+	<li>Download the latest release from <a href="https://sourceforge.net/project/platformdownload.php?group_id=157564" target="_blank">Soureforge</a></li>
+	<li>Unzip/untar the downloaded file</li>
+	<li>Create a backup of your current OpenEats installation by either copying your current OpenEats directory to another location or zipping up the current OpenEats directory</li>
+	<li>Backup your database for OpenEats</li>
+	<li>Copy all the contents of the new version of OpenEats that you just unzipped/untar to where you have OpenEats installed.  If you are using a Mac, you will want to use the ditto command to do this because copy/paste a folder in Macs does not work the same as it does on Windows/Linux.  To do this launch the Terminal.app found under the Utilites folder under Applications.  Type the command ditto new_OpenEats_directory/ current_OpenEats_directory/</li>
+	<li>Launch your browser and point it to your OpenEats URL with /web/setup/upgrade.php.  For example if  the URL you normaly access OpenEats at is http://localhost/oe  You would use http://localhost/oe/web/setup/upgrade.php  If your current URL to access OpenEats is http://oe.localhost  You would use http://oe.localhost/oe/setup/upgrade.php</li>
+	<li>Remove the cahce directory under the main OpenEats directory prior to trying to access your site.</li>
+</ol>
+<h2>Manual Upgrade</h2>
+If for some reason the automated way does not work perform the following steps to upgrade OpenEats.
+<ol>
+	<li>Perform steps 1-5 from above</li>
+	<li>Update your database. Run the appropriate sql file under the data/sql/upgrade folder under where you have installed OpenEats, using phpMyAdmin or any other SQL client. For example if you are upgrading from version 1.0 to version 1.1 use the upgrade_1.0_to_1.1.sql file, If there is not an sql file for your version then there was not any database changes and this step is not needed  If you are upgrading from 1.o to 1.3 you may need to run three seperate SQL files.</li>
+	<li>Edit the file apps/OpenEats/config/app.yml found under where you installed OpenEats.  Change the version: 1.x to the version you just upgraded to.  For example if the file said version: 1.0 and you upgraed to 1.1 change the 1.0 to 1.1</li>
+</ol>

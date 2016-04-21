@@ -1,0 +1,1 @@
+<?php echo include_partial('recipe/store_user_recipes', array('recipe' => $recipe)) ?>

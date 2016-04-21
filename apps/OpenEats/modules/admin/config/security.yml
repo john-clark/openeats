@@ -1,0 +1,23 @@
+index:
+  is_secure: on
+  credentials: [[administrator, moderator]]
+
+ClearCache:
+  is_secure: on
+  credentials: [[administrator, moderator]]
+
+BuildIndex:
+  is_secure: on
+  credentials: [[administrator, moderator]]
+
+ReportedRecipes:
+  is_secure: on
+  credentials: [[administrator, moderator]]
+
+ResetRecipeReport:
+  is_secure: on
+  credentials: [[administrator, moderator]]
+
+DeleteRecipe:
+  is_secure:on
+  credentials: administrator                 

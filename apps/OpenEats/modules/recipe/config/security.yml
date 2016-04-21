@@ -1,0 +1,6 @@
+edit:
+  is_secure:   on
+  credentials: [[administrator, owner]]
+
+all:
+  is_secure:   off

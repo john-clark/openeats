@@ -1,0 +1,5 @@
+AddSuccess:
+  has_layout:    on
+  components:    []
+  metas:
+    title: OpenEats::Add Ingreidents      
