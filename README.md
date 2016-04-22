@@ -3,7 +3,7 @@ OpenEats Symphony Web Application
 
 Original Author is [qgriffith](https://github.com/qgriffith)
 
-This project  is a forkm from [OpenEats project on SourceForge](https://sourceforge.net/projects/openeats/) to [Github](https://github.com/john-clark/openeats).
+This project  is a fork from [OpenEats project on SourceForge](https://sourceforge.net/projects/openeats/) to [Github](https://github.com/john-clark/openeats).
 
 I am not attempting to add any functionality or fix any bugs or security issues.
 
